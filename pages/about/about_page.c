@@ -7,7 +7,6 @@ void render_about_page(GtkWidget *widget, gpointer data)
     GtkWidget *title;
     GtkWidget *description;
 
-    // Validate content_area
     if (!content_area || !GTK_IS_WIDGET(content_area) || !GTK_IS_BOX(content_area)) {
         g_warning("Invalid content area widget passed to render_about_page");
         return;

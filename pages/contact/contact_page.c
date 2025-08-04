@@ -8,7 +8,6 @@ void render_contact_page(GtkWidget *widget, gpointer data)
     GtkWidget *description;
     GtkWidget *email_label;
 
-    // Validate content_area
     if (!content_area || !GTK_IS_WIDGET(content_area) || !GTK_IS_BOX(content_area)) {
         g_warning("Invalid content area widget passed to render_contact_page");
         return;

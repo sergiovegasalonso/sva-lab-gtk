@@ -1,71 +1,48 @@
-# SVA-GTK Library
+# sva-lab-gtk
 
-A simple GTK4-based desktop application with multiple pages and navigation.
-
-## Build
-
-```bash
-make clean
-make
-make run
-```
-
-## Testing
-
-Run the test suite to verify functionality:
-
-```bash
-# Run tests
-make test
-
-# Run tests with verbose output
-make test-verbose
-
-# Clean test artifacts
-make test-clean
-```
-
-For more detailed testing information, see the [tests README](tests/README.md).
-
-## CI/CD
-
-Run the complete CI pipeline:
-
-```bash
-./ci.sh
-```
+A simple GTK4-based desktop application for personal experiments.
 
 ## Project Structure
 
-```
-sva-gtk/
-├── main.c              # Main application entry point
-├── Makefile            # Build configuration
-├── ci.sh               # CI/CD script
-├── pages/              # Page components
-│   ├── home/
-│   ├── about/
-│   └── contact/
-├── utils/              # Utility functions
-│   ├── utils.c
-│   └── utils.h
-└── tests/              # Test suite
-    ├── test_utils.c
-    ├── Makefile
-    └── README.md
-```
+sva-lab-gtk/
+├── src/                        # Source code
+│   ├── main.c                  # Main application entry point
+│   ├── pages/                  # Page components
+│   │   ├── home/
+│   │   │   ├── home_page.c
+│   │   │   └── home_page.h
+│   │   ├── about/
+│   │   │   ├── about_page.c
+│   │   │   └── about_page.h
+│   │   └── contact/
+│   │       ├── contact_page.c
+│   │       └── contact_page.h
+│   └── utils/                  # Utility functions
+│       ├── utils.c
+│       └── utils.h
+├── test/                       # Test suite
+│   ├── README.md
+│   ├── utils/
+│   │   └── utils.c
+│   └── pages/
+│       ├── home/
+│       ├── about/
+│       └── contact/
+├── Makefile                    # Build configuration
+├── ci.sh                       # CI/CD script
+└── README.md                   # Project documentation
 
 ## Build Targets
 
-### Application Build and Execution
+### Application
 
-- **`make build`** - Build the main application executable
+- **`make build`** - Build the application executable
 - **`make run`** - Build and run the application
 - **`make clean`** - Clean application build artifacts
 - **`make rebuild`** - Clean and rebuild the application
-- **`make all`** - Default target (same as `build`)
+- **`make all`** - Build application executable (same as `build`)
 
-### Test Build and Execution
+### Test
 
 - **`make build-test`** - Build the test executable
 - **`make test`** - Build and run tests
@@ -88,6 +65,14 @@ make run
 
 # Build and run tests
 make test
+```
+
+## Continuous Integration
+
+Run the complete CI pipeline:
+
+```bash
+./ci.sh
 ```
 
 ## Pending Tasks

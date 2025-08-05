@@ -56,7 +56,10 @@ LIBS_TEST = `pkg-config --libs gtk4`
 TARGET_TEST = sva-gtk-test
 
 # source files
-SOURCES_TEST = test/utils/utils.c src/utils/utils.c
+SOURCES_TEST = test/main.c \
+			   test/_test_framework_/test_framework.c \
+			   test/utils/utils.c \
+			   src/utils/utils.c
 
 # object files automatically generated from source files
 OBJECTS_TEST = $(SOURCES_TEST:.c=.o)

@@ -1,0 +1,1 @@
+make clean-test && make test

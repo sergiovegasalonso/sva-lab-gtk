@@ -1,0 +1,33 @@
+# This workflow builds and tests a GTK4-based C application using Make
+name: Build and Test GTK4 Application
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install GTK4 dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libgtk-4-dev build-essential pkg-config
+
+    - name: Build application
+      run: make build
+
+    - name: Build tests
+      run: make build-test
+
+    - name: Run tests
+      run: make test
+
+    - name: Clean up
+      run: make clean clean-test
+

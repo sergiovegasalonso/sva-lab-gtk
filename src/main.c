@@ -10,8 +10,7 @@ static GtkWidget *create_navbar(GtkWidget *content_area);
 static GtkWidget *content_area;
 
 static void
-activate(GtkApplication *app,
-         gpointer user_data)
+activate(GtkApplication *app, gpointer user_data)
 {
     GtkWidget *window;
     GtkWidget *navbar;
@@ -80,8 +79,7 @@ static GtkWidget *create_navbar(GtkWidget *content_area)
     return navbar_wrapper;
 }
 
-int main(int argc,
-         char **argv)
+int main(int argc, char **argv)
 {
     GtkApplication *app;
     int status;

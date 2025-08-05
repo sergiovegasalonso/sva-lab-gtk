@@ -1,5 +1,4 @@
-# This workflow builds and tests a GTK4-based C application using Make
-name: Build and Test GTK4 Application
+name: Build and test the application
 
 on:
   push:
@@ -27,7 +26,3 @@ jobs:
 
     - name: Run tests
       run: make test
-
-    - name: Clean up
-      run: make clean clean-test
-

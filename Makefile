@@ -77,10 +77,6 @@ test/%.o: test/%.c
 
 # run tests
 test: $(TARGET_TEST)
-	./$(TARGET_TEST)
-
-# run tests with verbose output
-test-verbose: $(TARGET_TEST)
 	G_MESSAGES_DEBUG=all ./$(TARGET_TEST)
 
 # clean artifacts
@@ -90,4 +86,4 @@ clean-test:
 # rebuild everything
 rebuild-test: clean-test build-test
 
-.PHONY: all-test build-test test test-verbose clean-test rebuild-test
+.PHONY: all-test build-test test clean-test rebuild-test

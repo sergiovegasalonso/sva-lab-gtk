@@ -2,10 +2,36 @@
 
 A simple GTK4-based desktop application for personal experiments.
 
+## Installation GTK on Ubuntu
+
+To install GTK4 development dependencies on Ubuntu, run the following commands:
+
+```bash
+# Update package list
+sudo apt update
+
+# Install GTK4 development libraries and tools
+sudo apt install libgtk-4-dev
+
+# Install additional development tools
+sudo apt install build-essential pkg-config
+
+# Verify installation
+pkg-config --modversion gtk4
+```
+
+After installation, you should be able to build the project using the provided Makefile.
+
 ## Project Structure
 
 ```bash
 sva-lab-gtk/
+├── .github/
+│   ├── workflows/
+│       └── ci.yml              # Continous integration steps
+├── .vscode/
+│   ├── c_cpp_properties.json   # C and C++ configuration for Visual Studio Code
+│   └── settings.json           # C and C++ configuration for Visual Studio Code
 ├── src/                        # Source code
 │   ├── main.c                  # Main application entry point
 │   ├── pages/                  # Page components
@@ -29,8 +55,8 @@ sva-lab-gtk/
 │       ├── home/
 │       ├── about/
 │       └── contact/
+├── .gitignore                  # Files to be ignored by git
 ├── Makefile                    # Build configuration
-├── ci.sh                       # CI/CD script
 └── README.md                   # Project documentation
 ```
 
@@ -48,7 +74,6 @@ sva-lab-gtk/
 
 - **`make build-test`** - Build the test executable
 - **`make test`** - Build and run tests
-- **`make test-verbose`** - Build and run tests with verbose output
 - **`make clean-test`** - Clean test build artifacts
 - **`make rebuild-test`** - Clean and rebuild tests
 - **`make all-test`** - Build test executable (alias for `build-test`)
@@ -69,17 +94,9 @@ make run
 make test
 ```
 
-## Continuous Integration
-
-Run the complete CI pipeline:
-
-```bash
-./ci.sh
-```
-
 ## Pending Tasks
 
-0. refactorizar todo, incluso este readme
+0. refactorizar todo
 2. extract navbar component from main
 3. clear comments
 4. create style guideline

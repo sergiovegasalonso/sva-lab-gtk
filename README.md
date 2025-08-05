@@ -4,6 +4,7 @@ A simple GTK4-based desktop application for personal experiments.
 
 ## Project Structure
 
+```bash
 sva-lab-gtk/
 ├── src/                        # Source code
 │   ├── main.c                  # Main application entry point
@@ -31,6 +32,7 @@ sva-lab-gtk/
 ├── Makefile                    # Build configuration
 ├── ci.sh                       # CI/CD script
 └── README.md                   # Project documentation
+```
 
 ## Build Targets
 

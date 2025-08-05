@@ -85,6 +85,4 @@ Run the complete CI pipeline:
 4. create style guideline
 5. add prettier
 6. add husky
-7. add github action
 1. create basic tests
-

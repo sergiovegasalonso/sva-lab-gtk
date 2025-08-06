@@ -1,3 +1,7 @@
 #!/bin/bash
+set -eo pipefail
 
-make clean-test && make test
+echo "⚠ Running tests..."
+make clean-test
+make test
+echo "✓ Tests execution"

@@ -1,3 +1,6 @@
 #!/bin/bash
+set -eo pipefail
 
-make clean && make run
+echo "⚠ Running app..."
+make clean
+make run

@@ -64,11 +64,14 @@ make test
 
 ## Pending Tasks
 
+* dale caña a bin.sh y documentar el README con los comandos
 0. refactorizar todo
+* crear todos los tests
 1. cuando esté estable después de refactorizar todo, meter un cli para crear componentes, pages and utils
 3. clear comments
 4. create style guideline
-* crear todos los tests
+* meter css formatter
+* integrar con apt
 * mirar cómo meter variables de CSS
 * meter tema claro y tema oscuro aunque sea cargando distintos ficheros main en cada caso
 * cuando esté todo el proceso inicial listo replicar el proceso para ver si es fácil instalarlo en otro entorno y perfeccionar el proceso (ya que aquí no tenemos gestor de paquetes)

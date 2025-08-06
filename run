@@ -1,0 +1,25 @@
+#!/bin/bash
+set -eo pipefail
+
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <command>"
+    echo "Available commands: format, run, setup, tests"
+    exit 1
+fi
+
+COMMAND=$1
+BIN_DIR="$(dirname "$0")/bin"
+
+SCRIPT_PATH="$BIN_DIR/$COMMAND"
+
+if [ ! -f "$SCRIPT_PATH" ]; then
+    echo "Error: Script '$COMMAND' not found in $BIN_DIR"
+    echo "Available commands: format, run, setup, test"
+    exit 1
+fi
+
+if [ ! -x "$SCRIPT_PATH" ]; then
+    chmod +x "$SCRIPT_PATH"
+fi
+
+"$SCRIPT_PATH"

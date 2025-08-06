@@ -28,44 +28,6 @@ sudo apt install clang-format
 
 After installation, you should be able to build the project using the provided Makefile.
 
-## Project Structure
-
-```bash
-sva-lab-gtk/
-├── .github/
-│   ├── workflows/
-│       └── ci.yml              # Continous integration steps
-├── .vscode/
-│   ├── c_cpp_properties.json   # C and C++ configuration for Visual Studio Code
-│   └── settings.json           # C and C++ configuration for Visual Studio Code
-├── src/                        # Source code
-│   ├── main.c                  # Main application entry point
-│   ├── pages/                  # Page components
-│   │   ├── home/
-│   │   │   ├── home_page.c
-│   │   │   └── home_page.h
-│   │   ├── about/
-│   │   │   ├── about_page.c
-│   │   │   └── about_page.h
-│   │   └── contact/
-│   │       ├── contact_page.c
-│   │       └── contact_page.h
-│   └── utils/                  # Utility functions
-│       ├── utils.c
-│       └── utils.h
-├── test/                       # Test suite
-│   ├── README.md
-│   ├── utils/
-│   │   └── utils.c
-│   └── pages/
-│       ├── home/
-│       ├── about/
-│       └── contact/
-├── .gitignore                  # Files to be ignored by git
-├── Makefile                    # Build configuration
-└── README.md                   # Project documentation
-```
-
 ## Build Targets
 
 ### Application
@@ -106,8 +68,8 @@ make test
 1. cuando esté estable después de refactorizar todo, meter un cli para crear componentes, pages and utils
 3. clear comments
 4. create style guideline
-5. add prettier
 6. add husky
 * crear todos los tests
 * mirar cómo meter variables de CSS
 * meter tema claro y tema oscuro aunque sea cargando distintos ficheros main en cada caso
+* cuando esté todo el proceso inicial listo replicar el proceso para ver si es fácil instalarlo en otro entorno y perfeccionar el proceso (ya que aquí no tenemos gestor de paquetes)

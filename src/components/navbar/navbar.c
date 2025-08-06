@@ -3,35 +3,28 @@
 #include "src/pages/contact/contact_page.h"
 #include "src/pages/home/home_page.h"
 
-const int UNSET = -1;
-
 GtkWidget *render_navbar(GtkWidget *content_area)
 {
-    GtkWidget *navbar_wrapper;
-    GtkWidget *nav_button1;
-    GtkWidget *nav_button2;
-    GtkWidget *nav_button3;
+    GtkWidget *navbar;
+    GtkWidget *home_button;
+    GtkWidget *about_button;
+    GtkWidget *contact_button;
 
-    navbar_wrapper = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
-    gtk_widget_set_size_request(navbar_wrapper, 200, UNSET);
-    
-    gtk_widget_set_margin_top(navbar_wrapper, 10);
-    gtk_widget_set_margin_bottom(navbar_wrapper, 10);
-    gtk_widget_set_margin_start(navbar_wrapper, 10);
-    gtk_widget_set_margin_end(navbar_wrapper, 10);
+    navbar = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
+    gtk_widget_add_css_class(navbar, "navbar");
 
-    nav_button1 = gtk_button_new_with_label("Home");
-    g_signal_connect(nav_button1, "clicked", G_CALLBACK(render_home_page), content_area);
+    home_button = gtk_button_new_with_label("Home");
+    g_signal_connect(home_button, "clicked", G_CALLBACK(render_home_page), content_area);
 
-    nav_button2 = gtk_button_new_with_label("About");
-    g_signal_connect(nav_button2, "clicked", G_CALLBACK(render_about_page), content_area);
+    about_button = gtk_button_new_with_label("About");
+    g_signal_connect(about_button, "clicked", G_CALLBACK(render_about_page), content_area);
 
-    nav_button3 = gtk_button_new_with_label("Contact");
-    g_signal_connect(nav_button3, "clicked", G_CALLBACK(render_contact_page), content_area);
+    contact_button = gtk_button_new_with_label("Contact");
+    g_signal_connect(contact_button, "clicked", G_CALLBACK(render_contact_page), content_area);
 
-    gtk_box_append(GTK_BOX(navbar_wrapper), nav_button1);
-    gtk_box_append(GTK_BOX(navbar_wrapper), nav_button2);
-    gtk_box_append(GTK_BOX(navbar_wrapper), nav_button3);
+    gtk_box_append(GTK_BOX(navbar), home_button);
+    gtk_box_append(GTK_BOX(navbar), about_button);
+    gtk_box_append(GTK_BOX(navbar), contact_button);
 
-    return navbar_wrapper;
+    return navbar;
 }

@@ -21,11 +21,8 @@ void render_contact_page(GtkWidget *widget, gpointer data)
     description = gtk_label_new("Get in touch with us using the information below:");
     gtk_label_set_wrap(GTK_LABEL(description), TRUE);
 
-    email_label = gtk_label_new("Email: contact@example.com\nPhone: +1 (555) 123-4567");
-
     gtk_box_append(GTK_BOX(content_area), title);
     gtk_box_append(GTK_BOX(content_area), description);
-    gtk_box_append(GTK_BOX(content_area), email_label);
 
     g_print("Navigated to Contact\n");
 }

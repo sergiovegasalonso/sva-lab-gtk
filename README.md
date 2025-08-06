@@ -20,6 +20,12 @@ sudo apt install build-essential pkg-config
 pkg-config --modversion gtk4
 ```
 
+To install ```clang-format```, run the folling commands:
+
+```bash
+sudo apt install clang-format
+```
+
 After installation, you should be able to build the project using the provided Makefile.
 
 ## Project Structure
@@ -97,9 +103,11 @@ make test
 ## Pending Tasks
 
 0. refactorizar todo
-2. extract navbar component from main
+1. cuando esté estable después de refactorizar todo, meter un cli para crear componentes, pages and utils
 3. clear comments
 4. create style guideline
 5. add prettier
 6. add husky
-1. create basic tests
+* crear todos los tests
+* mirar cómo meter variables de CSS
+* meter tema claro y tema oscuro aunque sea cargando distintos ficheros main en cada caso

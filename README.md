@@ -68,7 +68,6 @@ make test
 1. cuando esté estable después de refactorizar todo, meter un cli para crear componentes, pages and utils
 3. clear comments
 4. create style guideline
-6. add husky
 * crear todos los tests
 * mirar cómo meter variables de CSS
 * meter tema claro y tema oscuro aunque sea cargando distintos ficheros main en cada caso

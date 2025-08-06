@@ -3,7 +3,7 @@
 #include "src/pages/home/home_page.h"
 #include <gtk/gtk.h>
 
-GtkWidget *render_navbar(GtkWidget *content_area) {
+GtkWidget *render_navbar(           GtkWidget *content_area) {
   GtkWidget *navbar;
   GtkWidget *home_button;
   GtkWidget *about_button;

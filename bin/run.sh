@@ -1,3 +1,4 @@
 #!/bin/bash
 
-make clean && make run
+make clean
+make run

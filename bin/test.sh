@@ -1,3 +1,4 @@
 #!/bin/bash
 
-make clean-test && make test
+make clean-test
+make test

@@ -1,5 +1,5 @@
 #include <gtk/gtk.h>
-#include "../../utils/utils.h"
+#include "src/utils/utils.h"
 
 void render_about_page(GtkWidget *widget, gpointer data)
 {

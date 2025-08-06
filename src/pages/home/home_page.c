@@ -1,5 +1,5 @@
 #include <gtk/gtk.h>
-#include "../../utils/utils.h"
+#include "src/utils/utils.h"
 
 static void
 print_hello(GtkWidget *widget,

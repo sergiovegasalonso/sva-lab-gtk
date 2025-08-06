@@ -1,8 +1,11 @@
+# root
+INCLUDES = -I.
+
 #######
 # app #
 #######
 CC = gcc
-CFLAGS = `pkg-config --cflags gtk4`
+CFLAGS = `pkg-config --cflags gtk4` $(INCLUDES)
 LIBS = `pkg-config --libs gtk4`
 
 # target executable
@@ -10,10 +13,11 @@ TARGET = sva-gtk
 
 # source files
 SOURCES = src/main.c \
-          src/pages/home/home_page.c \
+		  src/pages/home/home_page.c \
 		  src/pages/about/about_page.c \
 		  src/pages/contact/contact_page.c \
-          src/utils/utils.c
+          src/utils/utils.c \
+		  src/components/navbar/navbar.c
 
 # object files automatically generated from source files
 OBJECTS = $(SOURCES:.c=.o)
@@ -49,7 +53,7 @@ run: $(TARGET)
 # test  #
 #########
 CC_TEST = gcc
-CFLAGS_TEST = `pkg-config --cflags gtk4` -Wall -Wextra -g
+CFLAGS_TEST = `pkg-config --cflags gtk4` -Wall -Wextra -g $(INCLUDES)
 LIBS_TEST = `pkg-config --libs gtk4`
 
 # target executable

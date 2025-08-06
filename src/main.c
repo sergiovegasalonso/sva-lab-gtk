@@ -1,10 +1,7 @@
 #include <gtk/gtk.h>
-#include "utils/utils.h"
-#include "pages/home/home_page.h"
-#include "pages/about/about_page.h"
-#include "pages/contact/contact_page.h"
-
-static GtkWidget *create_navbar(GtkWidget *content_area);
+#include "src/components/navbar/navbar.h"
+#include "src/pages/home/home_page.h"
+#include "src/utils/utils.h"
 
 // global variable to hold the content area
 static GtkWidget *content_area;
@@ -33,7 +30,7 @@ activate(GtkApplication *app, gpointer user_data)
     gtk_widget_set_margin_end(content_area, 20);
 
     // Create navbar and add it to the main box
-    navbar = create_navbar(content_area);
+    navbar = render_navbar(content_area);
     gtk_box_append(GTK_BOX(main_box), navbar);
 
     // Add default content
@@ -45,38 +42,6 @@ activate(GtkApplication *app, gpointer user_data)
     gtk_window_set_child(GTK_WINDOW(window), main_box);
 
     gtk_window_present(GTK_WINDOW(window));
-}
-
-static GtkWidget *create_navbar(GtkWidget *content_area)
-{
-    GtkWidget *navbar_wrapper;
-    GtkWidget *nav_button1;
-    GtkWidget *nav_button2;
-    GtkWidget *nav_button3;
-
-    // Create vertical box for navbar (sidebar style)
-    navbar_wrapper = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
-    gtk_widget_set_size_request(navbar_wrapper, 150, -1);
-    gtk_widget_set_margin_top(navbar_wrapper, 10);
-    gtk_widget_set_margin_bottom(navbar_wrapper, 10);
-    gtk_widget_set_margin_start(navbar_wrapper, 10);
-    gtk_widget_set_margin_end(navbar_wrapper, 10);
-
-    // Add navigation buttons with click handlers
-    nav_button1 = gtk_button_new_with_label("Home");
-    g_signal_connect(nav_button1, "clicked", G_CALLBACK(render_home_page), content_area);
-
-    nav_button2 = gtk_button_new_with_label("About");
-    g_signal_connect(nav_button2, "clicked", G_CALLBACK(render_about_page), content_area);
-
-    nav_button3 = gtk_button_new_with_label("Contact");
-    g_signal_connect(nav_button3, "clicked", G_CALLBACK(render_contact_page), content_area);
-
-    gtk_box_append(GTK_BOX(navbar_wrapper), nav_button1);
-    gtk_box_append(GTK_BOX(navbar_wrapper), nav_button2);
-    gtk_box_append(GTK_BOX(navbar_wrapper), nav_button3);
-
-    return navbar_wrapper;
 }
 
 int main(int argc, char **argv)

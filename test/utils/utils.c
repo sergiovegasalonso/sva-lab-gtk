@@ -1,9 +1,9 @@
-#include <gtk/gtk.h>
-#include <glib.h>
-#include <stdio.h>
 #include <assert.h>
-#include "../_test_framework_/test_framework.h" 
-#include "../../src/utils/utils.h"
+#include <glib.h>
+#include <gtk/gtk.h>
+#include <stdio.h>
+#include "src/utils/utils.h"
+#include "test/_test_framework_/test_framework.h" 
 
 gboolean test_clear_content_area_with_valid_box()
 {

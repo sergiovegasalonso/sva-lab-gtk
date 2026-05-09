@@ -30,17 +30,6 @@ After installation, you should be able to build the project using the provided M
 
 ## Build Targets
 
-### Using the run script
-
-You can use the `./run` script to execute common tasks:
-
-- **`./run setup`** - Setup the development environment
-- **`./run start`** - Build and run the application
-- **`./run test`** - Build and run tests
-- **`./run format`** - Format the source code using clang-format
-
-### Using Make directly
-
 ### Application
 
 - **`make build`** - Build the application executable
@@ -60,15 +49,6 @@ You can use the `./run` script to execute common tasks:
 This separation allows you to build and execute the application and tests independently:
 
 ```bash
-# Using the run script
-
-./run build     # Just build the app
-./run run       # Build and run the app
-./run test      # Build and run tests
-./run format    # Format source code
-
-# Using make directly
-
 make build      # Just build the app without running it
 make build-test # Just build tests without running them
 make run        # Build and run the app

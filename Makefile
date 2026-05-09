@@ -1,96 +1,73 @@
-# root
-INCLUDES = -I.
+# ========== CONFIG ==========
+CC			:= gcc
+PKG_CONFIG  := pkg-config
+GTK_CFLAGS  := $(shell $(PKG_CONFIG) --cflags gtk4)
+GTK_LIBS	:= $(shell $(PKG_CONFIG) --libs gtk4)
+INCLUDES	:= -I.
 
-#######
-# app #
-#######
-CC = gcc
-CFLAGS = `pkg-config --cflags gtk4` $(INCLUDES)
-LIBS = `pkg-config --libs gtk4`
+CFLAGS		:= $(GTK_CFLAGS) $(INCLUDES)
+LDFLAGS		:= $(GTK_LIBS)
 
-# target executable
-TARGET = sva-gtk
+# ========== APP BUILD ==========
+APP_NAME	:= sva-gtk
+APP_SRC		:= src/main.c \
+			   src/pages/home/home_page.c \
+			   src/pages/about/about_page.c \
+			   src/pages/contact/contact_page.c \
+			   src/utils/utils.c \
+			   src/components/navbar/navbar.c
+APP_OBJS	:= $(APP_SRC:.c=.o)
 
-# source files
-SOURCES = src/main.c \
-		  src/pages/home/home_page.c \
-		  src/pages/about/about_page.c \
-		  src/pages/contact/contact_page.c \
-          src/utils/utils.c \
-		  src/components/navbar/navbar.c
-
-# object files automatically generated from source files
-OBJECTS = $(SOURCES:.c=.o)
-
-# default target
-all: $(TARGET)
-
-# build the executable (alias for build)
-build: $(TARGET)
-
-# build the executable
-$(TARGET): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $(TARGET) $(LIBS)
-
-# compile source files to object files
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# clean artifacts
-clean:
-	rm -f $(OBJECTS) $(TARGET)
-
-# rebuild everything
-rebuild: clean build
-
-# run the application
-run: $(TARGET)
-	./$(TARGET)
-
-.PHONY: all build clean rebuild run
-
-#########
-# test  #
-#########
-CC_TEST = gcc
-CFLAGS_TEST = `pkg-config --cflags gtk4` -Wall -Wextra -g $(INCLUDES)
-LIBS_TEST = `pkg-config --libs gtk4`
-
-# target executable
-TARGET_TEST = sva-gtk-test
-
-# source files
-SOURCES_TEST = test/main.c \
+# ========== TEST BUILD ==========
+TEST_NAME   := sva-gtk-test
+TEST_SRC	:= test/main.c \
 			   test/_test_framework_/test_framework.c \
 			   test/utils/utils.c \
 			   src/utils/utils.c
+TEST_OBJS   := $(TEST_SRC:.c=.o)
 
-# object files automatically generated from source files
-OBJECTS_TEST = $(SOURCES_TEST:.c=.o)
+# ========== DEFAULT TARGET ==========
+.PHONY: all
+all: build
 
-# default target
-all-test: $(TARGET_TEST)
+# ========== BUILD RULES ==========
+.PHONY: build
+build: $(APP_NAME)
 
-# build the test executable (alias for build-test)
-build-test: $(TARGET_TEST)
+$(APP_NAME): $(APP_OBJS)
+	$(CC) $^ -o $@ $(LDFLAGS)
 
-# build the executable
-$(TARGET_TEST): $(OBJECTS_TEST)
-	$(CC_TEST) $(OBJECTS_TEST) -o $(TARGET_TEST) $(LIBS_TEST)
+.PHONY: build-test
+build-test: $(TEST_NAME)
 
-# compile test source files to object files (separate rule to avoid conflicts)
-test/%.o: test/%.c
-	$(CC_TEST) $(CFLAGS_TEST) -c $< -o $@
+$(TEST_NAME): $(TEST_OBJS)
+	$(CC) $^ -o $@ $(CFLAGS) $(LDFLAGS)
 
-# run tests
-test: $(TARGET_TEST)
-	G_MESSAGES_DEBUG=all ./$(TARGET_TEST)
+# ========== COMPILE RULE ==========
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# clean artifacts
+# ========== RUN ==========
+.PHONY: run
+run: $(APP_NAME)
+	./$(APP_NAME)
+
+.PHONY: test
+test: $(TEST_NAME)
+	G_MESSAGES_DEBUG=all ./$(TEST_NAME)
+
+# ========== CLEAN ==========
+.PHONY: clean clean-test clean-all
+clean:
+	rm -f $(APP_OBJS) $(APP_NAME)
+
 clean-test:
-	rm -f $(OBJECTS_TEST) $(TARGET_TEST)
+	rm -f $(TEST_OBJS) $(TEST_NAME)
 
-# rebuild everything
+clean-all: clean clean-test
+
+# ========== REBUILD ==========
+.PHONY: rebuild rebuild-test rebuild-all
+rebuild: clean build
 rebuild-test: clean-test build-test
-
-.PHONY: all-test build-test test clean-test rebuild-test
+rebuild-all: clean-all build build-test
